@@ -1,0 +1,4 @@
+pubilc function index{
+  returin view('index');
+
+}
