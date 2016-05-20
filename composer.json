@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "laraveldaily/quickadmin": "~1.1",
         "illuminate/html": "~5.0",
-        "maddhatter/laravel-fullcalendar": "~1.2"
+        "maddhatter/laravel-fullcalendar": "~1.2",
+        "guzzlehttp/guzzle": "~5.0"
     },
     "require": {
     "laravelcollective/html": "5.1.*"

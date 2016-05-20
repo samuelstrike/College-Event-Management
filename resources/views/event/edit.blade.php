@@ -21,11 +21,16 @@
         </div>
         <div class="panel-body">
 		
-		@if($errors)
-			@foreach($errors->all() as $error)
-			<p>{{ $error }}</p>
-			@endforeach
-		@endif
+		@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <strong>Sorry!!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 		
 		<form action="{{ url('events/' . $event->id) }}" method="POST" files="true" enctype="multipart/form-data">
 			{{ csrf_field() }}
@@ -51,14 +56,14 @@
 			</div>
 			<div class="form-group @if($errors->has('venue')) has-error has-feedback @endif">
 				<label for="venue">Venue</label>
-				<select class="form-control" name="venue">
-					<option selected disabled><------------select the venue--------------></option>
-    				<option value="Multipurpose hall {{ $event->venue}}">Multipurpose hall</option>
-    				<option value="Conference hall 1 {{ $event->venue}}">Conference hall 1</option>
-    				<option value="Conference hall 2 {{ $event->venue}}">Conference hall 2</option>
-    				<option value="CR#8 {{ $event->venue}}">CR#8</option>
-    				<option value="CR#12 {{ $event->venue}}">CR#12</option>
-    				<option value="Dinning hall {{ $event->venue}}">Dinning hall</option>
+				<select class="form-control" name="venue" value='{{ $event->venue }}'>
+					<option selected disabled>{{ $event->venue }}</option>
+    				<option value="Multipurpose hall ">Multipurpose hall</option>
+    				<option value="Conference hall 1 ">Conference hall 1</option>
+    				<option value="Conference hall 2 ">Conference hall 2</option>
+    				<option value="CR#8 ">CR#8</option>
+    				<option value="CR#12 ">CR#12</option>
+    				<option value="Dinning hall ">Dinning hall</option>
 
     			</select>
 				@if ($errors->has('venue'))
@@ -69,7 +74,7 @@
 			</div>
 			<div class="form-group @if($errors->has('agenda')) has-error has-feedback @endif">
 				<label for="agenda">Agenda</label>
-				<input type="file" class="filestyle" name="agenda" placeholder="" value="{{ $event->agenda }}">
+				<input type="file" class="form-control" name="agenda"  value="{{ $event->agenda }}">
 				@if ($errors->has('agenda'))
 					<p class="help-block"><span class="glyphicon glyphicon-exclamation-sign"></span> 
 					{{ $errors->first('agenda') }}
@@ -79,7 +84,7 @@
 			<div class="form-group @if($errors->has('time')) has-error @endif">
 				<label for="time">Time</label>
 				<div class="input-group">
-					<input type="text" class="form-control" name="time" value="{{ $event->start_time . ' - ' . $event->end_time }}" placeholder="Select your time">
+					<input type="text" class="form-control" name="time" value="{{ $event->start_time . ' - ' . $event->end_time }}" >
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
                     </span>

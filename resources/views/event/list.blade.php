@@ -1,10 +1,8 @@
 @extends('layout')
 
 @section('content')
-
-
 <div class="row">
-	<div class="col-lg-12">
+	<div clss="col-lg-12">
 		<ol class="breadcrumb">
 			<li>You are here: <a href="{{ url('/') }}">Home</a></li>
 			<li class="active"><a href="{{ url('/events') }}">Events</a></li>
@@ -13,9 +11,19 @@
 </div>
 
 <div class="row">
+	<div class="content-wrapper">
+	<div class="container">
 	<div class="col-lg-12">
+    <h4 class="page-head-line">Event List</h4>
+      <div class="panel panel-default">
+      	 <div class="panel-heading">
+               Event List
+          </div>
+		<div class="panel-body">
+        <div class="table-responsive">
+
 		@if($events->count() > 0)
-		<table class="table table-striped">
+		<table class="table">
 			<thead>
 				<tr>
 					<th>#</th>
@@ -23,7 +31,9 @@
 					<th>Start</th>
 					<th>End</th>
 					<th>Venue</th>	
+					<th>Action</th>
 					<th>Action</th> 
+					 
 
 				</tr>
 			</thead>
@@ -39,6 +49,8 @@
 					<td>
 						<a class="btn btn-primary btn-xs" href="{{ url('events/' . $event->id . '/edit')}}">
 							<span class="glyphicon glyphicon-edit"></span> Edit</a> 
+					</td>
+					<td>	
 						<form action="{{ url('events/' . $event->id) }}" style="display:inline" method="POST">
 							<input type="hidden" name="_method" value="DELETE" />
 							{{ csrf_field() }}
@@ -54,5 +66,10 @@
 			<h2>No event yet!</h2>
 		@endif
 	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 @endsection

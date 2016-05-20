@@ -91,6 +91,12 @@ class CheckRoomAvailability extends ServiceProvider
             }
             return true;
         });
+        Validator::extend('venue', function($attribute, $value, $parameters, $validator) {
+            
+            $case = DB::table('events')
+                            ->select('venue')
+                            ->where('start_time', '>', $start);
+        });
         
        
     }

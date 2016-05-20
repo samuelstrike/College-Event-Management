@@ -17,6 +17,12 @@ Route::get('/', function () {
 	];
     return view('event/index', $data);
 });
+Route::get('manual', function () {
+	$data = [
+		'page_title' => 'manual',
+	];
+    return view('manual/manual', $data);
+});
 
 Route::resource('events', 'EventController');
 
@@ -35,12 +41,7 @@ Route::get('/api', function () {
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
-Route::get('manual', function () {
-	$data = [
-		'page_title' => 'manual',
-	];
-    return view('manual/manual', $data);
-});
+
 
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
@@ -54,4 +55,4 @@ Route::group(['prefix' => 'Event', 'middleware'=>'auth'], function() {
 });
 
 //upload and download
-Route::get('events/{filename}','DownloadController@download');
+Route::get('events/{file}','DownloadController@download');

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-lg-12">
+	<div clss="col-lg-12">
 		<ol class="breadcrumb">
 			<li>You are here: <a href="{{ url('/') }}">Home</a></li>
 			<li><a href="{{ url('/events') }}">Events</a></li>
@@ -13,15 +13,22 @@
 </div>
 
 @include('message')
-<!-- <div class="jumbotron"> -->
 <div class="row">
-<!--  <div id="signupbox" style="margin-top: 10px;" class="mainbox col-md-10 col-md-offset-1">
- -->    <!-- <div class="panel panel-info"> -->
-    	<!-- <div class="panel-heading">
-            <div class="panel-title"><span class="glyphicon glyphicon-plus"></span>Event</div>
-            
-        </div> -->
+        <div class="col-md-8 col-md-offset-2">
+        <h3 class="page-head-line">Add Event </h3>
+		<div class="panel panel-danger">
+        <div class="panel-heading">Event</div>	
         <div class="panel-body">
+        	@if (count($errors) > 0)
+    	<div class="alert alert-danger">
+        <strong>Sorry!!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    	</div>
+		@endif
 			
 		<form action="{{ url('events') }}" method="POST" files="true" enctype="multipart/form-data">
 			{{ csrf_field() }}
@@ -92,15 +99,48 @@
 			
 			
 		<div id="dynamicInput" class="form-group">
-			<input type="button" value="Add attendee" class="btn btn-primary" onClick="addInput('dynamicInput');">
+			<!-- <input type="button" value="Add attendee" class="btn btn-primary" onClick="addInput('dynamicInput');"> -->
      	
-				<button type="submit" class="btn btn-primary">Submit</button>
+		
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Member</button>
+
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="exampleModalLabel">Add Member</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form>
+		          <div class="form-group">
+		            <label for="name" class="control-label">Name:</label>
+		            <input type="text" class="form-control" id="name">
+		          </div>
+		          <div class="form-group">
+		            <label for="email" class="control-label">Email:</label>
+		            <input type="text" class="form-control" id="name">
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" >submit</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
 		</div>
 		</form>		
 	</div>
 	<!-- </div> -->
 <!-- </div> -->
 </div>
+</div>
+</div>
+
 <!-- </div> -->
 @endsection
 

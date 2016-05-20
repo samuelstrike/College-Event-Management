@@ -1,9 +1,8 @@
 @extends('layout')
 
 @section('content')
-
 <div class="row">
-	<div class="col-lg-12">
+	<div clss="col-lg-12">
 		<ol class="breadcrumb">
 			<li>You are here: <a href="{{ url('/') }}">Home</a></li>
 			<li><a href="{{ url('/events') }}">Events</a></li>
@@ -11,11 +10,9 @@
 		</ol>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-lg-12">
-		<h2>{{ $event->title }} <small>created by {{ $event->name }}</small></h2>
-		<hr>
+		<h2 class="page-head-line">{{ $event->title }} <small><em>created by {{ $event->name }}</em></small></h2>
 	</div>
 </div>
 
@@ -29,6 +26,10 @@
 		<p>Duration: <br>
 		{{ $duration }}
 		</p>
+		<p>
+			<a class="btn btn-primary" href="{{ url('events/' . $event->id . '/download')}}">
+				<span class="glyphicon glyphicon-download"></span> Download Event Agenda</a>
+		</p>
 		@if(Auth::user())
 		<p>
 			<form action="{{ url('events/' . $event->id) }}" style="display:inline;" method="POST">
@@ -38,6 +39,7 @@
 			</form>
 			<a class="btn btn-primary" href="{{ url('events/' . $event->id . '/edit')}}">
 				<span class="glyphicon glyphicon-edit"></span> Edit</a> 
+			
 			
 		</p>
 		@endif

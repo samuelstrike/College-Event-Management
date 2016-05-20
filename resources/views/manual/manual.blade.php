@@ -1,16 +1,18 @@
 @extends('layout')
 @section('content')
-<div class="row">
+<!-- <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
 			<li>You are here: <a href="{{ url('/') }}">Home</a></li>
 			<li class="active">User Manual</li>
 		</ol>
 	</div>
-</div>
+</div> -->
 <div class="row">
+  <div class="col-md-12">
+     <h4 class="page-head-line">College Event Management System</h4>
+  </div>
 	<div class="panel-body">
-		<h2><strong>College Event Management System</strong></h2>
   		<em>We recommend our user for easy access to our system</em>
   
   <div class="panel-group" id="accordion">

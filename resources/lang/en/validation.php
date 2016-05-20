@@ -19,7 +19,7 @@ return [
     'alpha'                => 'The :attribute may only contain letters.',
     'alpha_dash'           => 'The :attribute may only contain letters, numbers, and dashes.',
     'alpha_num'            => 'The :attribute may only contain letters and numbers.',
-    'venue'            => 'The room is booked at the selected :attribute.',
+    'venue'                 => 'The room is booked at the selected :attribute.',
     
     'available'            => 'The meeting cannot be schedule at the selected :attribute.',
     'array'                => 'The :attribute must be an array.',

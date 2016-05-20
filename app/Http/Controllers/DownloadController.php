@@ -14,9 +14,9 @@ class DownloadController extends Controller
      *
      * @return Response
      */
-    public function download($filename){
+    public function download($file){
     
-        $file_path = public_path('upload'.$filename);
+        $file_path = public_path('upload'.$file);
         return response()->download($file_path);
     }
 

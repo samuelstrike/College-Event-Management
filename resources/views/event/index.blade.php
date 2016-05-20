@@ -11,8 +11,23 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-lg-9">
+		<h1 class="page-head-line">Calendar</h1>
 		<div id='calendar'></div>
+	</div>
+	<div class="col-lg-3">
+		<h1 class="page-head-line">Upcoming Events</h1>
+	<div class="alert alert-success">
+		<div id=''>1.FYP REVIEW II</div>
+		<div id=''>2.Sport Meeting</div>
+		<div id=''>3.Meeting 1</div>
+		<div id=''>4.Football meeting</div>
+	</div>
+	<div class="alert alert-danger">
+
+		<div></div>
+	</div>
+		
 	</div>
 </div>
 @endsection

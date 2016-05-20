@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    /**
-     * Get the comments for the blog post.
-     */
     
+    protected $table = 'events';
+    
+    protected $fillable = ['name', 'title', 'venue','agenda','start_time','end_time'];
+    
+    public function users(){
 
+        return $this->belongsTo('App\User');
+
+    }
 }

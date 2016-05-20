@@ -77,7 +77,6 @@ class EventController extends Controller
              'title' => 'required|min:5|max:100',
              'time'  => 'required|available|duration',
              'venue'=> 'required',
-            // 'agenda'=> 'required',
 
          ]);
         
@@ -86,16 +85,14 @@ class EventController extends Controller
         $event                  = new Event;
         $event->name            = $request->input('name');
         $event->title           = $request->input('title');
-        //$event->agenda           = $request->input('agenda');
         $event->venue           = $request->input('venue');
         $event->start_time      = $this->change_date_format($time[0]);
         $event->end_time        = $this->change_date_format($time[1]);
           
         
-         $image = Input::file('agenda');
-        $filename = $image->getClientOriginalName();
-        $request->file('agenda')->move(base_path() . '/public/upload/', $filename);
-        $event->agenda = 'public/upload/ '. $filename;
+        $file = $request->file('agenda')->getClientOriginalName();
+        $request->file('agenda')->move(base_path() . '/public/upload/', $file);
+        $event->agenda = 'public/upload/ '. $file;
         $event->save();
         $request->session()->flash('success', 'The event was successfully saved!');
         return redirect('events/create');
@@ -157,7 +154,6 @@ class EventController extends Controller
             'name'  => 'required|min:5|max:15',
             'title' => 'required|min:5|max:100',
             'time'  => 'required|duration',
-            //'agenda'=> 'required',
             'venue'=> 'required',
 
         ]);
@@ -167,16 +163,14 @@ class EventController extends Controller
         $event                  = Event::findOrFail($id);
         $event->name            = $request->input('name');
         $event->title           = $request->input('title');
-        //$event->agenda           = $request->input('agenda');
         $event->venue           = $request->input('venue');
         $event->start_time      = $this->change_date_format($time[0]);
         $event->end_time        = $this->change_date_format($time[1]);
         
 
-        // $image = Input::file('agenda');
-        // $filename =$image->getClientOriginalName();
-        // $request->file('agenda')->move(base_path() . '/public/upload/', $filename);
-        // $event->agenda = 'public/upload/ '. $filename;
+       $file = $request->file('agenda')->getClientOriginalName();
+        $request->file('agenda')->move(base_path() . '/public/upload/', $file);
+        $event->agenda = 'public/upload/ '. $file;
 
         $event->save();
 

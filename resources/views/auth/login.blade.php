@@ -5,6 +5,7 @@
         <div class="row">
         
         <div class="col-md-8 col-md-offset-2">
+        <h1 class="page-head-line">Please Login to Add Event </h1>
         <div class="panel panel-default">
         <div class="panel-heading">Login</div>
         <div style="float:right; font-size: 80%; position: relative; top:-30px">
